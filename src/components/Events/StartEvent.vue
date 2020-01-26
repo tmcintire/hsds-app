@@ -7,6 +7,7 @@
           v-model="cash"
         ></v-text-field>
         <v-btn @click="startEvent">Start Event</v-btn>
+        <v-btn @click="$emit('close-start')">Cancel</v-btn>
       </v-container>
     </v-overlay>
   </div>

@@ -1,14 +1,14 @@
 <template>
   <v-container class="home">
-    <h1>{{ event.name }} - {{ event.date }}</h1>
+    <h1>{{ event.name }} - {{ event.date }} - {{ eventStatus }}</h1>
     <v-row>
       <router-link :to="{ name: 'addEditEvent', params: { id } }"
         >Edit Event</router-link
       >
-      <v-btn @click="startEvent">Start Event</v-btn>
-      <v-btn @click="finalizeEvent">Finalize Event</v-btn>
+      <v-btn v-if="!eventStarted" @click="startEvent">Start Event</v-btn>
+      <v-btn v-else @click="finalizeEvent">Finalize Event</v-btn>
     </v-row>
-    <div v-if="event">
+    <div v-if="event && eventStarted">
       <Tickets :id="id" :tickets="event.tickets" />
       <Expenses :id="id" :expenses="event.expenses" />
 
@@ -16,6 +16,9 @@
       <p>Total Expenses: ${{ totalExpenses }}</p>
       <p>Net: ${{ net }}</p>
       <p>Starting Cash: ${{ event.cash }}</p>
+    </div>
+    <div v-else>
+      <h3>This event has not been started, please start the event</h3>
     </div>
 
     <StartEvent
@@ -31,7 +34,7 @@
 import Vue from "vue";
 import { mapGetters } from "vuex";
 import { forEach } from "lodash-es";
-import { IEvent } from "@/interfaces";
+import { IEvent, EventStatus } from "@/interfaces";
 import { totalRevenue, totalExpenses } from "@/helpers/calculations";
 import Tickets from "@/components/Events/Tickets.vue";
 import Expenses from "@/components/Events/Expenses.vue";
@@ -50,6 +53,17 @@ export default Vue.extend({
     }),
     event(): IEvent {
       return this.events[this.$route.params.id];
+    },
+    eventStarted(): boolean {
+      return this.event.status === EventStatus.active;
+    },
+    eventStatus(): string {
+      if (this.event.status === EventStatus.created) {
+        return "Created";
+      } else if (this.event.status === EventStatus.active) {
+        return "Active";
+      }
+      return "Closed";
     },
     id(): string {
       return this.$route.params.id;

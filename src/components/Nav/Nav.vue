@@ -11,7 +11,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-group prepend-icon="mdi-home" value="true">
+        <v-list-group prepend-icon="mdi-home" :value="false">
           <template v-slot:activator>
             <v-list-item-title>Reports</v-list-item-title>
           </template>

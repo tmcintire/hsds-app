@@ -11,6 +11,17 @@ export const totalRevenue = (event: IEvent): number => {
   return total;
 };
 
+export const totalTickets = (event: IEvent): number => {
+  let total = 0;
+  if (event.tickets && Object.keys(event.tickets).length > 0) {
+    forEach(event.tickets, (ticket, key) => {
+      total += ticket.count;
+    });
+  }
+
+  return total;
+};
+
 export const totalExpenses = (event: IEvent): number => {
   let total = 0;
   if (event.expenses && Object.keys(event.expenses).length > 0) {
