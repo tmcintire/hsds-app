@@ -1,24 +1,29 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import firebase from "../../firebase";
-import { addEditEvent, updateTicketCount, finalizeEvent, startEvent } from '@/api/api';
+import {
+  addEditEvent,
+  updateTicketCount,
+  finalizeEvent,
+  startEvent
+} from "@/api/api";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     events: {},
-    eventId: ''
+    eventId: ""
   },
   mutations: {
     eventsUpdated(state, payload) {
       state.events = payload;
     },
     eventUpdated(state: any, payload) {
-      state.events[payload.id] = payload.event
+      state.events[payload.id] = payload.event;
     },
     subscribeEvent(state: any, payload) {
-      state.eventId = payload.id
+      state.eventId = payload.id;
     },
     addEditEvent(state: any, payload) {
       // if (state.events[payload.id]) {
@@ -33,23 +38,23 @@ export default new Vuex.Store({
       context.commit("eventsUpdated", payload);
     },
     eventUpdated(context, payload) {
-      context.commit('eventUpdated', payload)
+      context.commit("eventUpdated", payload);
     },
     subscribeEvent(context, payload) {
-      context.commit('subscribeEvent', payload)
+      context.commit("subscribeEvent", payload);
     },
     async addEditEvent(context, payload) {
-      const id = await addEditEvent(payload)
-      return id
+      const id = await addEditEvent(payload);
+      return id;
     },
     updateTicketCount(context, payload) {
-      updateTicketCount(payload)
+      updateTicketCount(payload);
     },
     finalizeEvent(context, payload) {
-      finalizeEvent(payload)
+      finalizeEvent(payload);
     },
     startEvent(context, payload) {
-      startEvent(payload)
+      startEvent(payload);
     }
   },
   getters: {
@@ -58,9 +63,9 @@ export default new Vuex.Store({
     },
     getEvent(state) {
       if (state.events[state.eventId]) {
-        return state.events[state.eventId]
+        return state.events[state.eventId];
       }
-      return null
+      return null;
     }
   },
   modules: {}

@@ -2,7 +2,7 @@
   <v-form>
     <h3 class="flex-row flex-center">Event Info</h3>
     <v-text-field :label="'Name'" v-model="name"></v-text-field>
-    <DatePicker v-on:update-event="updateEvent" :date="event.date"/>
+    <DatePicker v-on:update-event="updateEvent" :date="event.date" />
   </v-form>
 </template>
 

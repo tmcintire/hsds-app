@@ -12,13 +12,13 @@ Vue.use(VueRouter);
 
 export const navigateName = (route: string) => {
   if (route !== router.currentRoute.name) {
-    router.push({ name: route }).catch((err) => console.error(err));
+    router.push({ name: route }).catch(err => console.error(err));
   }
 };
 
 export const navigatePath = (path: any) => {
   if (path !== router.currentRoute.path) {
-    router.push(path).catch((err) => console.error(err));
+    router.push(path).catch(err => console.error(err));
   }
 };
 
@@ -58,7 +58,6 @@ const routes = [
     name: "reports",
     component: Reports
   }
-
 ];
 
 const router = new VueRouter({

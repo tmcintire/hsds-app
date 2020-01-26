@@ -1,9 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-    >
+    <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
         <v-list-item @click="navigate('home')">
           <v-list-item-action>
@@ -14,21 +11,20 @@
           </v-list-item-content>
         </v-list-item>
 
-        
-        <v-list-group
-          prepend-icon="mdi-home"
-          value="true"
-        >
+        <v-list-group prepend-icon="mdi-home" value="true">
           <template v-slot:activator>
             <v-list-item-title>Reports</v-list-item-title>
           </template>
           <v-list-item-content>
-            <v-list-item @click="navigatePath('reports', { key: 'year', value: year })" v-for="year in years" :key="year">
-              <v-list-item-title >{{year}}</v-list-item-title>
+            <v-list-item
+              @click="navigatePath('reports', { key: 'year', value: year })"
+              v-for="year in years"
+              :key="year"
+            >
+              <v-list-item-title>{{ year }}</v-list-item-title>
             </v-list-item>
           </v-list-item-content>
         </v-list-group>
-
 
         <v-list-item @click="navigate('events')">
           <v-list-item-action>
@@ -38,7 +34,9 @@
             <v-list-item-title>Events</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="navigatePath('addEditEvent', {key: 'id', value: undefined})">
+        <v-list-item
+          @click="navigatePath('addEditEvent', { key: 'id', value: undefined })"
+        >
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
@@ -57,17 +55,13 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar
-      app
-      color="indigo"
-      dark
-    >
+    <v-app-bar app color="indigo" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue";
 import { navigateName, navigatePath } from "@/router";
 import moment from "moment";
@@ -123,8 +117,7 @@ export default Vue.extend({
 });
 </script>
 
-
-<style scoped lang='less'>
+<style scoped lang="less">
 #nav {
   padding: 30px;
 

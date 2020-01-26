@@ -2,7 +2,10 @@
   <div class="home">
     <v-overlay dark :opacity="0.8" v-model="dialog">
       <v-container>
-        <v-text-field :label="'Starting Cash Box'" v-model="cash"></v-text-field>
+        <v-text-field
+          :label="'Starting Cash Box'"
+          v-model="cash"
+        ></v-text-field>
         <v-btn @click="startEvent">Start Event</v-btn>
       </v-container>
     </v-overlay>

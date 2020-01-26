@@ -1,13 +1,14 @@
 <template>
   <div class="home">
     <h1>Reports</h1>
-    <EventReport 
-      v-for="(event, key) in yearEvents" 
-      :key="key" 
-      :event="event" 
-      :id="key"/> 
-    
-    <p>${{net}}</p>
+    <EventReport
+      v-for="(event, key) in yearEvents"
+      :key="key"
+      :event="event"
+      :id="key"
+    />
+
+    <p>${{ net }}</p>
   </div>
 </template>
 

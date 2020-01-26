@@ -1,29 +1,29 @@
 import moment from "moment";
 
-const currentDate = moment().format('L'); // get the current date
+const currentDate = moment().format("L"); // get the current date
 
 export function fetchFutureEvents(events) {
   const futureEvents = {};
-  Object.keys(events).map((event) => {
+  Object.keys(events).map(event => {
     const date = events[event].date;
     if (new Date(date).getTime() > new Date(currentDate).getTime()) {
       futureEvents[event] = events[event];
     }
     return futureEvents;
   });
-  return orderEvents(futureEvents, 'ascending');
+  return orderEvents(futureEvents, "ascending");
 }
 
 export function fetchPastEvents(events) {
   const pastEvents = {};
-  Object.keys(events).map((event) => {
+  Object.keys(events).map(event => {
     const date = events[event].date;
     if (new Date(date).getTime() < new Date(currentDate).getTime()) {
       pastEvents[event] = events[event];
     }
     return pastEvents;
   });
-  return orderEvents(pastEvents, 'descending');
+  return orderEvents(pastEvents, "descending");
 }
 
 /* Function to sort array in ascending order */
@@ -54,14 +54,15 @@ export function sortArrayDescendingByName(a, b) {
 export function orderEvents(events, direction) {
   // Create an array of the returned events
   const eventsArray: any[] = [];
-  Object.keys(events).map((event) => { //eslint-disable-line
+  Object.keys(events).map(event => {
+    //eslint-disable-line
     eventsArray.push({
       key: event,
-      value: events[event],
+      value: events[event]
     });
   });
   // Sort the events
-  if (direction === 'ascending') {
+  if (direction === "ascending") {
     eventsArray.sort(sortArrayAscendingByDate);
   } else {
     eventsArray.sort(sortArrayDescendingByDate);

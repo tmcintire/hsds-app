@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field :label="'Type'" v-model="type" ></v-text-field>
+    <v-text-field :label="'Type'" v-model="type"></v-text-field>
     <v-text-field :label="'Price'" v-model="price"></v-text-field>
   </div>
 </template>
@@ -19,4 +19,3 @@ export default Vue.extend({
   }
 });
 </script>
-

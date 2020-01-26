@@ -1,11 +1,15 @@
 <template>
   <v-stepper v-model="page">
     <v-stepper-header>
-      <v-stepper-step @click="page = 1" :complete="page > 1" step="1">Event Details</v-stepper-step>
+      <v-stepper-step @click="page = 1" :complete="page > 1" step="1"
+        >Event Details</v-stepper-step
+      >
 
       <v-divider></v-divider>
 
-      <v-stepper-step @click="page = 2" :complete="page > 2" step="2">Ticket Info</v-stepper-step>
+      <v-stepper-step @click="page = 2" :complete="page > 2" step="2"
+        >Ticket Info</v-stepper-step
+      >
 
       <v-divider></v-divider>
 
@@ -14,7 +18,6 @@
 
     <v-stepper-items>
       <v-stepper-content step="1" title="Event">
-          
         <EditEventInfo :event.sync="event" />
 
         <v-btn color="primary" @click="page = 2">Continue</v-btn>
@@ -22,7 +25,7 @@
       </v-stepper-content>
 
       <v-stepper-content step="2">
-        <EditTicketInfo :tickets.sync="event.tickets"/>
+        <EditTicketInfo :tickets.sync="event.tickets" />
 
         <v-btn color="primary" @click="page = 3">Continue</v-btn>
         <v-btn color="primary" @click="page -= 1">Back</v-btn>
@@ -30,7 +33,7 @@
       </v-stepper-content>
 
       <v-stepper-content step="3">
-        <EditExpenseInfo :expenses.sync="event.expenses"/>
+        <EditExpenseInfo :expenses.sync="event.expenses" />
 
         <v-btn color="primary" @click="addEditEvent">Submit</v-btn>
         <v-btn color="primary" @click="page -= 1">Back</v-btn>

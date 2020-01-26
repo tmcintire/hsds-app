@@ -1,5 +1,5 @@
-import { IEvent } from '@/interfaces';
-import { forEach } from 'lodash-es';
+import { IEvent } from "@/interfaces";
+import { forEach } from "lodash-es";
 export const totalRevenue = (event: IEvent): number => {
   let total = 0;
   if (event.tickets && Object.keys(event.tickets).length > 0) {
@@ -9,7 +9,7 @@ export const totalRevenue = (event: IEvent): number => {
   }
 
   return total;
-}
+};
 
 export const totalExpenses = (event: IEvent): number => {
   let total = 0;
@@ -20,4 +20,4 @@ export const totalExpenses = (event: IEvent): number => {
   }
 
   return total;
-}
+};

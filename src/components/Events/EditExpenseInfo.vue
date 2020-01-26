@@ -2,8 +2,10 @@
   <v-form>
     <h3 class="flex-row flex-center">Expense Info</h3>
     <v-expansion-panels>
-      <v-expansion-panel v-for="(expense, key) in expenses" :key="key" >
-        <v-expansion-panel-header>{{expense.desc}} - ${{expense.cost}}</v-expansion-panel-header>
+      <v-expansion-panel v-for="(expense, key) in expenses" :key="key">
+        <v-expansion-panel-header
+          >{{ expense.desc }} - ${{ expense.cost }}</v-expansion-panel-header
+        >
         <v-expansion-panel-content>
           <ExpenseInfo :id="key" :expense="expense" />
         </v-expansion-panel-content>

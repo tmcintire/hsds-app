@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <Nav :events="events"/>
+    <Nav :events="events" />
     <v-content>
       <v-container class="main-wrapper">
         <router-view v-if="eventsLoaded"></router-view>
-      <h1 v-else>Loading</h1>
+        <h1 v-else>Loading</h1>
       </v-container>
     </v-content>
   </v-app>

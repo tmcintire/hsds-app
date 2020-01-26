@@ -3,7 +3,9 @@
     <h3 class="flex-row flex-center">Ticket Info</h3>
     <v-expansion-panels>
       <v-expansion-panel v-for="(ticket, key) in tickets" :key="key">
-        <v-expansion-panel-header>{{ticket.type}} - ${{ticket.price}}</v-expansion-panel-header>
+        <v-expansion-panel-header
+          >{{ ticket.type }} - ${{ ticket.price }}</v-expansion-panel-header
+        >
         <v-expansion-panel-content>
           <TicketInfo :id="key" :ticket="ticket" />
         </v-expansion-panel-content>

@@ -1,12 +1,12 @@
 <template>
   <div class="home">
     <h1>Events</h1>
-    <router-link 
-      v-for="(event, key) in closedEvents" 
-      :key="key" 
-      :to="{ name: 'eventDetails', params: {id: key } }"
+    <router-link
+      v-for="(event, key) in closedEvents"
+      :key="key"
+      :to="{ name: 'eventDetails', params: { id: key } }"
     >
-      {{event.name}}
+      {{ event.name }}
     </router-link>
   </div>
 </template>

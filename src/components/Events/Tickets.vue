@@ -2,10 +2,14 @@
   <v-container>
     <h1>Tickets</h1>
     <v-row v-for="(ticket, key) in tickets" :key="key">
-      <p>${{ticket.price}}</p>   
+      <p>${{ ticket.price }}</p>
       <v-btn @click="updateTicketCount(ticket, key, 1)">Add</v-btn>
-      <v-btn :disabled="ticket.count < 1" @click="updateTicketCount(ticket, key, -1)">Remove</v-btn>
-      {{ticket.count}}
+      <v-btn
+        :disabled="ticket.count < 1"
+        @click="updateTicketCount(ticket, key, -1)"
+        >Remove</v-btn
+      >
+      {{ ticket.count }}
     </v-row>
   </v-container>
 </template>
@@ -28,4 +32,3 @@ export default Vue.extend({
   }
 });
 </script>
-

@@ -22,8 +22,8 @@ try {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 } catch (e) {
-  throw e
+  throw e;
 }
-console.error(firebase)
+console.error(firebase);
 
-export default firebase
+export default firebase;

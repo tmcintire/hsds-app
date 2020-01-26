@@ -1,6 +1,9 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-export function mapPropsModels(props: string[] = [], { object, event }: any = {}) {
+export function mapPropsModels(
+  props: string[] = [],
+  { object, event }: any = {}
+) {
   return props.reduce((obj, prop) => {
     const computedProp = {
       get() {
@@ -15,17 +18,19 @@ export function mapPropsModels(props: string[] = [], { object, event }: any = {}
   }, {});
 }
 
-
-export function mapPropsFloatModels(props: string[] = [], { object, event }: any = {}) {
+export function mapPropsFloatModels(
+  props: string[] = [],
+  { object, event }: any = {}
+) {
   return props.reduce((obj, prop) => {
     const computedProp = {
       get() {
         return object ? this[object][prop] : this[prop];
       },
       set(value: string) {
-        const floatValue = parseFloat(value)
-        const limitDecimal = floatValue.toFixed(2)
-        const formattedValue = parseFloat(limitDecimal)
+        const floatValue = parseFloat(value);
+        const limitDecimal = floatValue.toFixed(2);
+        const formattedValue = parseFloat(limitDecimal);
         Vue.set(this[object], prop, formattedValue);
       }
     };

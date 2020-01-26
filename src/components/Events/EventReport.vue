@@ -1,7 +1,5 @@
 <template>
-  <div>
-    {{event.name}} - ${{event.net}}
-  </div>
+  <div>{{ event.name }} - ${{ event.net }}</div>
 </template>
 
 <script lang="ts">
@@ -14,4 +12,3 @@ export default Vue.extend({
   components: {}
 });
 </script>
-

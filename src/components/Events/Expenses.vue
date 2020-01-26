@@ -2,8 +2,8 @@
   <v-container>
     <h1>Expenses</h1>
     <v-row v-for="(expense, key) in expenses" :key="key">
-      <p>${{expense.desc}}</p>      
-      <p>${{expense.cost}}</p>
+      <p>${{ expense.desc }}</p>
+      <p>${{ expense.cost }}</p>
     </v-row>
   </v-container>
 </template>
@@ -18,4 +18,3 @@ export default Vue.extend({
   methods: {}
 });
 </script>
-
