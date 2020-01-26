@@ -3,7 +3,7 @@
     <Nav :events="events" />
     <v-content>
       <v-container class="main-wrapper">
-        <InAppNavigation />
+        <!-- <InAppNavigation /> -->
         <router-view v-if="eventsLoaded"></router-view>
         <h1 v-else>Loading</h1>
       </v-container>
@@ -28,8 +28,8 @@ import store from "@/store";
 export default Vue.extend({
   name: "App",
   components: {
-    Nav,
-    InAppNavigation
+    Nav
+    // InAppNavigation
   },
   computed: {
     ...mapGetters({
