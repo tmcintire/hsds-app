@@ -84,7 +84,6 @@ export default Vue.extend({
   }),
   methods: {
     finalizeEvent() {
-      console.log("finalizing event");
       this.$store.dispatch("finalizeEvent", { id: this.id, event: this.event });
     },
     startEvent() {

@@ -105,6 +105,10 @@ export default Vue.extend({
         key: this.key
       });
 
+      this.$store.dispatch("snackBar", {
+        text: this.key ? "Event Updated" : "Event Created"
+      });
+
       // After the event is created, navigate to it
       if (id) {
         navigatePath({ name: "eventDetails", params: { id } });

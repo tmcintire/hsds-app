@@ -13,7 +13,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     events: {},
-    eventId: ""
+    eventId: "",
+    snackBar: null
   },
   mutations: {
     eventsUpdated(state, payload) {
@@ -31,6 +32,13 @@ export default new Vuex.Store({
       // } else {
       //   state.event
       // }
+    },
+    snackBar(state: any, payload) {
+      state.snackBar = payload;
+
+      setTimeout(() => {
+        state.snackBar = null;
+      }, 4000);
     }
   },
   actions: {
@@ -55,6 +63,9 @@ export default new Vuex.Store({
     },
     startEvent(context, payload) {
       startEvent(payload);
+    },
+    snackBar(context, payload) {
+      context.commit("snackBar", payload);
     }
   },
   getters: {
@@ -66,6 +77,9 @@ export default new Vuex.Store({
         return state.events[state.eventId];
       }
       return null;
+    },
+    getSnackBar(state) {
+      return state.snackBar;
     }
   },
   modules: {}
