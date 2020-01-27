@@ -66,7 +66,7 @@
 import Vue from "vue";
 import { navigateName, navigatePath } from "@/router";
 import moment from "moment";
-
+// comment
 export default Vue.extend({
   name: "Nav",
   props: ["events"],
