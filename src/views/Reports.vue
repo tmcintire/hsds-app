@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>{{ year }} Yearly Report</h1>
+    <h1 class="text-center">{{ year }} Yearly Report</h1>
 
     <v-container>
       <v-row no-gutters>

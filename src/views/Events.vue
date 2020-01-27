@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="text-center">
     <h1>Events</h1>
     <router-link
       v-for="(event, key) in closedEvents"

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="text-center">
     <h1>Admin</h1>
     <v-btn @click="convert">Convert</v-btn>
   </div>

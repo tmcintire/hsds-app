@@ -1,6 +1,8 @@
 <template>
   <v-container class="home">
-    <h1>{{ event.name }} - {{ event.date }} - {{ eventStatus }}</h1>
+    <h1 class="text-center">
+      {{ event.name }} - {{ event.date }} - {{ eventStatus }}
+    </h1>
     <v-row>
       <router-link :to="{ name: 'addEditEvent', params: { id } }"
         >Edit Event</router-link
