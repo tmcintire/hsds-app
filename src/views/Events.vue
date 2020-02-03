@@ -1,42 +1,73 @@
 <template>
-  <div class="text-center">
-    <h1>Events</h1>
-    <router-link
-      v-for="(event, key) in closedEvents"
-      :key="key"
-      :to="{ name: 'eventDetails', params: { id: key } }"
-    >
-      {{ event.name }}
-    </router-link>
+  <div>
+    <h1 class="text-center">Active Events</h1>
+    <EventCard
+      :event="event"
+      v-for="event in activeEvents"
+      :key="event.id"
+      :id="event.id"
+    />
+    <h1 class="text-center">Upcoming Events</h1>
+    <EventCard
+      :event="event"
+      v-for="event in upcomingEvents"
+      :key="event.id"
+      :id="event.id"
+    />
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
+<script lang="ts">
 import { mapGetters } from "vuex";
-import { fetchEventDetails } from "@/api/api";
+import { forEach, orderBy, sortby, pickBy } from "lodash-es";
 import { EventStatus } from "../interfaces";
+import EventCard from "@/components/Events/EventCard";
 
 export default {
   name: "events",
-  components: {},
+  components: {
+    EventCard
+  },
   computed: {
     ...mapGetters({
       events: "getEvents"
     }),
-    closedEvents() {
-      const closedEvents = {};
-      Object.keys(this.events).map(id => {
-        const event = this.events[id];
+    allUpcomingEvents(): any {
+      const upcomingEvents = {};
+      forEach(this.events, (event, id) => {
         if (
           event.status === EventStatus.active ||
           event.status === EventStatus.created
         ) {
-          closedEvents[id] = event;
+          upcomingEvents[id] = event;
         }
       });
 
-      return closedEvents;
+      const upEvents = this.orderEvents(upcomingEvents);
+
+      return upEvents;
+    },
+    activeEvents(): any {
+      return pickBy(
+        this.allUpcomingEvents,
+        event => event.status === EventStatus.active
+      );
+    },
+    upcomingEvents(): any {
+      return pickBy(
+        this.allUpcomingEvents,
+        event => event.status === EventStatus.created
+      );
+    }
+  },
+  methods: {
+    orderEvents(events) {
+      let orderedEvents: any = [];
+      forEach(events, (event, id) => {
+        orderedEvents.push({ ...event, id });
+      });
+
+      return orderBy(orderedEvents, "date");
     }
   }
 };
